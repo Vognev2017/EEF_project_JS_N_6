@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<%- include('./partials/head'); %>
+
+<body>
+    <%- include('./partials/navbar'); %>
+    <div class="container">
+        <h4>You can select only image files: *.jpeg *.png *.jpg</h4>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div><input type="file" name="myImage" /></div>
+            <div><input type="submit" value="Upload selected" /></div>
+        </form>
+    </div>
+    <%- include('./partials/footer'); %>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('./partials/head'); %>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<body>
+    <%- include('./partials/navbar'); %>
+    <div class="my-container">
+        <div id="comment"></div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            let result = prompt("Password please: pass = 20", 0);
+            if (result > 0) {
+                getUser(result)
+            } else {
+                document.querySelector("#comment").innerHTML = "<h1>You did not input password!</h1>"
+            }
+        }
+        async function getUser(pass) {
+
+            try {
+                const response = await axios.get(`/comment/${pass}`);
+                document.querySelector("#comment").innerHTML = response.data.comment
+            } catch (error) {
+                console.error("error", error);
+                window.location.href = '/comment-error';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
